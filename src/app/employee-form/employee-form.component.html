@@ -1,0 +1,113 @@
+<form [formGroup]="employeeForm">
+    <div class="form-froup">
+        <input type="hidden" formControlName="id">
+    </div>
+
+    <div class="form-group">
+        <label for="firstName">FirstName:</label>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName">
+        <span class="help-block"
+            *ngIf="this.employeeForm.get('firstName')?.invalid  && this.employeeForm.get('firstName')?.touched">Please
+            enter valid FirstName</span>
+    </div>
+    <div class="form-group">
+        <label for="lastName">LastName:</label>
+        <input type="text" class="form-control" id="lastName" formControlName="lastName">
+        <span class="help-block"
+            *ngIf="this.employeeForm.get('lastName')?.invalid  && this.employeeForm.get('lastName')?.touched">Please
+            enter valid LastName</span>
+    </div>
+    <div class="form-group">
+        <label for="email">Email address:</label>
+        <input type="email" class="form-control" id="email" formControlName="email">
+        <span class="help-block"
+            *ngIf="this.employeeForm.get('email')?.invalid  && this.employeeForm.get('email')?.touched">Please enter
+            valid email address</span>
+    </div>
+
+    <div class="form-group">
+        <label class="radio-inline" *ngFor="let exp of experience">
+            <input type="radio" name="experience" formControlName="experience" [value]="exp">
+            {{exp}}
+        </label>
+        <span class="help-block"
+            *ngIf="this.employeeForm.get('experience')?.invalid  && this.employeeForm.get('experience')?.touched">Please
+            select Experience</span>
+    </div>
+    <div class="form-group">
+        <label for="experienceYears">Experience in years:</label>
+        <input type="number" class="form-control" id="experienceYears" formControlName="experienceYears">
+        <span class="help-block"
+            *ngIf="this.employeeForm.get('experienceYears')?.invalid  && this.employeeForm.get('experienceYears')?.touched">Please
+            enter years</span>
+    </div>
+
+    <!-- <div formGroupName="addressInfo">
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="textarea" rows="4" class="form-control" id="address" formControlName="address">
+                        <span class="help-block" 
+                        *ngIf="this.employeeForm.get('addressInfo.address')?.invalid  && this.employeeForm.get('addressInfo.address')?.touched"
+                        >Please enter valid address</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" class="form-control" id="city" formControlName="city">
+                        <span class="help-block" 
+                        *ngIf="this.employeeForm.get('addressInfo.city')?.invalid  && this.employeeForm.get('addressInfo.city')?.touched"
+                        >Please enter valid city</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <select class="form-control" id="state" formControlName="state">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                        <span class="help-block" 
+                        *ngIf="this.employeeForm.get('addressInfo.state')?.invalid  && this.employeeForm.get('addressInfo.state')?.touched"
+                        >Please select valid State</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country:</label>
+                        <select class="form-control" id="country" formControlName="country">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                        <span class="help-block" 
+                        *ngIf="this.employeeForm.get('addressInfo.country')?.invalid  && this.employeeForm.get('addressInfo.country')?.touched"
+                        >Please select valid Country</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipcode">Zip code:</label>
+                        <input type="number" class="form-control" id="zipcode" formControlName="zipcode">
+                        <span class="help-block" 
+                        *ngIf="this.employeeForm.get('addressInfo.zipcode')?.invalid  && this.employeeForm.get('addressInfo.zipcode')?.touched"
+                        >Please enter valid FirstName</span>
+                    </div>
+                </div> -->
+
+    <div class="form-group">
+        <label for="contactNo">Contact No:</label>
+        <input type="number" class="form-control" id="contactNo" formControlName="contactNo">
+        <span class="help-block"
+            *ngIf="this.employeeForm.get('contactNo')?.invalid  && this.employeeForm.get('contactNo')?.touched">Please
+            enter valid Contact Number</span>
+    </div>
+    <div formArrayName="skills">
+        <h5>Skills: </h5> 
+        <button type="button" class="btn btn-primary" (click)="addSkill()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <div class="form-group" *ngFor="let skill of getSkills(); let i=index">
+            <input type="text" class="form-control" [formControlName]="i">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary " (click)="onSubmit()"
+        [disabled]="this.employeeForm?.invalid">Submit</button>
+
+    <button type="button" class="btn btn-primary " (click)="onReset()">Reset</button>
+
+</form>

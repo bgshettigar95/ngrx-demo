@@ -1,0 +1,36 @@
+<!-- <div class="backdrop"></div> -->
+<header>
+    <h3>Employee Data</h3>
+    <nav>
+        <ul>
+
+            <li>
+                <button class="btn btn-success" (click)="addEmp()"><i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+            </li>
+            <li>
+                <button class="btn btn-danger" (click)="onDeleteClick()"><i class="fa fa-trash" aria-hidden="true"></i>
+                    </button>
+            </li>
+       
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="container-fluid">
+        <div class="row employee-details">
+            <div class="col-md-6">
+                <app-employee-table #employeeTable></app-employee-table>
+            </div>
+            <div class="col-md-4 employeeForm" *ngIf="showForm">
+                <app-employee-form></app-employee-form>
+            </div>
+        </div>
+    
+    </div>
+</main>
+
+
+<footer>
+
+</footer>

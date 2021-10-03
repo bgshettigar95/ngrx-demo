@@ -1,0 +1,11 @@
+
+{{this.employeeService.getEmployees() | async}}
+<ag-grid-angular #agGrid 
+style="width: 800px; height: 500px;" 
+class="ag-theme-balham"
+[rowData]="rowData" 
+[columnDefs]="columnDefs" 
+rowSelection="multiple"
+(rowClicked)=onRowSelected()>
+</ag-grid-angular>
+
